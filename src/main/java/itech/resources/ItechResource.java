@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import itech.helloWorldService.Gender;
 import itech.helloWorldService.HelloWorld;
 import itech.helloWorldService.HelloWorldJsonExample;
+import itech.helloWorldService.Itech;
 
 import org.glassfish.jersey.client.JerseyClient;
 
@@ -35,8 +36,15 @@ public class ItechResource extends JerseyClient {
     @Path("/login")
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public String login() {
-        return "<html><body>login</body></html>";
+    public String presentLogin() {
+    	return Itech.getResource("anmeldeformular.html");
+    }
+    
+    @Path("/login")
+    @POST
+    @Produces(MediaType.TEXT_HTML)
+    public String processLogin() {
+    	return Itech.getResource("banner.txt");
     }
     
     @Path("/formular")
