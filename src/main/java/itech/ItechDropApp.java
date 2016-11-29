@@ -6,6 +6,7 @@ import io.dropwizard.setup.Environment;
 import itech.client.HelloWorldClient;
 import itech.resources.HelloWorldJsonResource;
 import itech.resources.HelloWorldResource;
+import itech.resources.ItechResource;
 
 import javax.ws.rs.client.Client;
 
@@ -22,6 +23,7 @@ public class ItechDropApp extends Application<ItechDropConf> {
         environment.jersey().register(new HelloWorldClient(client));
         environment.jersey().register(new HelloWorldResource());
         environment.jersey().register(new HelloWorldJsonResource());
+        environment.jersey().register(new ItechResource(client));
         // Beispiel für einen
         System.out.println(configuration.getConsumableValue());
     }
