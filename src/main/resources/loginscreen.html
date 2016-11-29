@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
 <style>
 /*!
  * Bootstrap v4.0.0-alpha.5 (https://getbootstrap.com)
@@ -6692,657 +6692,101 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 }
 /*# sourceMappingURL=bootstrap.css.map */
 </style>
-
+</head>
+<body>
+	
 <script type="text/javascript">
 
 $(document).ready(function()
 {	
-	$('#AnmeldeForm').change(function() {
+	$('#login_submit').click(function() {
+		var results = document.getElementById("");
+	})
+	
+	
+	$('#loginForm').change(function() {
 		
-		var firma=document.forms["AnmeldeForm"]["firma"].value;	
-		var strasse=document.forms["AnmeldeForm"]["strasse"].value;		
-		var hausnr=document.forms["AnmeldeForm"]["hausnr"].value;		
-		var plz=document.forms["AnmeldeForm"]["plz"].value;		
-		var ort=document.forms["AnmeldeForm"]["ort"].value;		
-		var telefon=document.forms["AnmeldeForm"]["telefon"].value;		
-		var telefax=document.forms["AnmeldeForm"]["telefax"].value;		
-		var vorname=document.forms["AnmeldeForm"]["vorname"].value;	
-		var name=document.forms["AnmeldeForm"]["name"].value;
-		var email=document.forms["AnmeldeForm"]["email"].value;
-		var nachname_azubi=document.forms["AnmeldeForm"]["nachname_azubi"].value;
-		var vorname_azubi=document.forms["AnmeldeForm"]["vorname_azubi"].value;
-		var geburtsdatum_azubi=document.forms["AnmeldeForm"]["geburtsdatum_azubi"].value;
-		var geburtsort_azubi=document.forms["AnmeldeForm"]["geburtsort_azubi"].value;
-		var staatsangehoerigkeit_azubi=document.forms["AnmeldeForm"]["staatsangehoerigkeit_azubi"].value;
-		var geburtsland_azubi=document.forms["AnmeldeForm"]["geburtsland_azubi"].value;
-		var strasse_azubi=document.forms["AnmeldeForm"]["strasse_azubi"].value;
-		var hausnr_azubi=document.forms["AnmeldeForm"]["hausnr_azubi"].value;
-		var plz_azubi=document.forms["AnmeldeForm"]["plz_azubi"].value;
-		var ort_azubi=document.forms["AnmeldeForm"]["ort_azubi"].value;
-		var bundesland_azubi=document.forms["AnmeldeForm"]["bundesland_azubi"].value;
-		var telefon_azubi=document.forms["AnmeldeForm"]["telefon_azubi"].value;
-		var mobil_azubi=document.forms["AnmeldeForm"]["mobil_azubi"].value;
-		var email_azubi=document.forms["AnmeldeForm"]["email_azubi"].value;
-		var nachname_erziehungsberechtigte=document.forms["AnmeldeForm"]["nachname_erziehungsberechtigte"].value;
-		var vorname_erziehungsberechtigte=document.forms["AnmeldeForm"]["vorname_erziehungsberechtigte"].value;
-		var strasse_erziehungsberechtigte=document.forms["AnmeldeForm"]["strasse_erziehungsberechtigte"].value;
-		var hausnr_erziehungsberechtigte=document.forms["AnmeldeForm"]["hausnr_erziehungsberechtigte"].value;
-		var plz_erziehungsberechtigte=document.forms["AnmeldeForm"]["plz_erziehungsberechtigte"].value;
-		var ort_erziehungsberechtigte=document.forms["AnmeldeForm"]["ort_erziehungsberechtigte"].value;
-		var telefon_erziehungsberechtigte=document.forms["AnmeldeForm"]["telefon_erziehungsberechtigte"].value;
-		var email_erziehungsberechtigte=document.forms["AnmeldeForm"]["email_erziehungsberechtigte"].value;
-		var bundesland_bildungsweg=document.forms["AnmeldeForm"]["bundesland_bildungsweg"].value;
-		var schulname_bildungsweg=document.forms["AnmeldeForm"]["schulname_bildungsweg"].value;
-		var entlassungsjahr_bildungsweg=document.forms["AnmeldeForm"]["entlassungsjahr_bildungsweg"].value;
-		var hoechsterabschluss_bildungsweg=document.forms["AnmeldeForm"]["hoechsterabschluss_bildungsweg"].value;
-		var schulbesuchsjahr_bildungsweg=document.forms["AnmeldeForm"]["schulbesuchsjahr_bildungsweg"].value;
-		var fachrichtung_ausbildung=document.forms["AnmeldeForm"]["fachrichtung_ausbildung"].value;
-		var ausbildungszeit_vom_ausbildung=document.forms["AnmeldeForm"]["ausbildungszeit_vom_ausbildung"].value;
-		var ausbildungszeit_bis_ausbildung=document.forms["AnmeldeForm"]["ausbildungszeit_bis_ausbildung"].value;
-		var begruendung_ausbildung=document.forms["AnmeldeForm"]["begruendung_ausbildung"].value;
+	var loginform = document.getElementById('loginForm');	
+		
+	var username=document.forms["loginForm"]["username"].value;		
+	var password=document.forms["loginForm"]["password"].value;
+	
+	document.getElementById('username').onblur = function() {
 
-	document.getElementById('firma').onblur = function() {
-
-		if (firma == "") {
-			  document.getElementById('firma').style.borderColor = "red";
+		if (username == "") {
+			  document.getElementById('username').style.borderColor = "red";
 		  } else {
-			  document.getElementById('firma').style.borderColor = "green";
+			  document.getElementById('username').style.borderColor = "green";
 		  }
 	};
 	
-	document.getElementById('strasse').onblur = function() {
+	document.getElementById('password').onblur = function() {
 		
-		  if (strasse == "") {
-			  document.getElementById('strasse').style.borderColor = "red";
+		  if (password == "") {
+			  document.getElementById('password').style.borderColor = "red";
+			  return;
 		  } else {
-			  document.getElementById('strasse').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('hausnr').onblur = function() {
-
-		if (hausnr == "") {
-			  document.getElementById('hausnr').style.borderColor = "red";
-		  } else {
-			  document.getElementById('hausnr').style.borderColor = "green";
+			  document.getElementById('password').style.borderColor = "green";
 		  }
 	};
 	
-	document.getElementById('plz').onblur = function() {
-
-		  if (plz == "") {
-			  document.getElementById('plz').style.borderColor = "red";
-		  } else {
-			  document.getElementById('plz').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('ort').onblur = function() {
-	
-		if (ort == "") {
-			  document.getElementById('ort').style.borderColor = "red";
-		  } else {
-			  document.getElementById('ort').style.borderColor = "green";
-		  }
-	};
-	
-	document.getElementById('telefon').onblur = function() {
-
-		  if (telefon == "") {
-			  document.getElementById('telefon').style.borderColor = "red";
-		  } else {
-			  document.getElementById('telefon').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('telefax').onblur = function() {
-	
-
-		if (telefax == "") {
-			  document.getElementById('telefax').style.borderColor = "red";
-		  } else {
-			  document.getElementById('telefax').style.borderColor = "green";
-		  }
-	};
-	
-	document.getElementById('vorname').onblur = function() {
-		
-		  if (vorname == "") {
-			  document.getElementById('vorname').style.borderColor = "red";
-		  } else {
-			  document.getElementById('vorname').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('name').onblur = function() {
-		
-		  if (name == "") {
-			  document.getElementById('name').style.borderColor = "red";
-		  } else {
-			  document.getElementById('name').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('email').onblur = function() {
-
-		if (email == "") {
-			  document.getElementById('email').style.borderColor = "red";
-		  } else {
-			  document.getElementById('email').style.borderColor = "green";
-		  }
-	};
-	
-	document.getElementById('nachname_azubi').onblur = function() {
-		
-		  if (nachname_azubi == "") {
-			  document.getElementById('nachname_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('nachname_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('vorname_azubi').onblur = function() {
-
-		if (vorname_azubi == "") {
-			  document.getElementById('vorname_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('vorname_azubi').style.borderColor = "green";
-		  }
-	};
-	
-	document.getElementById('geburtsdatum_azubi').onblur = function() {
-
-		  if (geburtsdatum_azubi == "") {
-			  document.getElementById('geburtsdatum_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('geburtsdatum_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('ort').onblur = function() {
-	
-		if (ort == "") {
-			  document.getElementById('ort').style.borderColor = "red";
-		  } else {
-			  document.getElementById('ort').style.borderColor = "green";
-		  }
-	};
-	
-	document.getElementById('telefon').onblur = function() {
-
-		  if (telefon == "") {
-			  document.getElementById('telefon').style.borderColor = "red";
-		  } else {
-			  document.getElementById('telefon').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('telefax').onblur = function() {
-	
-
-		if (telefax == "") {
-			  document.getElementById('telefax').style.borderColor = "red";
-		  } else {
-			  document.getElementById('telefax').style.borderColor = "green";
-		  }
-	};
-	
-	document.getElementById('vorname').onblur = function() {
-		
-		  if (vorname == "") {
-			  document.getElementById('vorname').style.borderColor = "red";
-		  } else {
-			  document.getElementById('vorname').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('name').onblur = function() {
-		
-		  if (name == "") {
-			  document.getElementById('name').style.borderColor = "red";
-		  } else {
-			  document.getElementById('name').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('staatsangehoerigkeit_azubi').onblur = function() {
-		
-		  if (staatsangehoerigkeit_azubi == "") {
-			  document.getElementById('staatsangehoerigkeit_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('staatsangehoerigkeit_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('geburtsort_azubi').onblur = function() {
-		
-		  if (geburtsort_azubi == "") {
-			  document.getElementById('geburtsort_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('geburtsort_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('geburtsland_azubi').onblur = function() {
-		
-		  if (geburtsland_azubi == "") {
-			  document.getElementById('geburtsland_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('geburtsland_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('strasse_azubi').onblur = function() {
-		
-		  if (strasse_azubi == "") {
-			  document.getElementById('strasse_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('strasse_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('hausnr_azubi').onblur = function() {
-		
-		  if (hausnr_azubi == "") {
-			  document.getElementById('hausnr_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('hausnr_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('plz_azubi').onblur = function() {
-		
-		  if (plz_azubi == "") {
-			  document.getElementById('plz_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('plz_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('ort_azubi').onblur = function() {
-		
-		  if (ort_azubi == "") {
-			  document.getElementById('ort_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('ort_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('bundesland_azubi').onblur = function() {
-		
-		  if (bundesland_azubi == "") {
-			  document.getElementById('bundesland_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('bundesland_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('telefon_azubi').onblur = function() {
-		
-		  if (telefon_azubi == "") {
-			  document.getElementById('telefon_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('telefon_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('mobil_azubi').onblur = function() {
-		
-		  if (mobil_azubi == "") {
-			  document.getElementById('mobil_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('mobil_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('email_azubi').onblur = function() {
-		
-		  if (email_azubi == "") {
-			  document.getElementById('email_azubi').style.borderColor = "red";
-		  } else {
-			  document.getElementById('email_azubi').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('nachname_erziehungsberechtigte').onblur = function() {
-		
-		  if (nachname_erziehungsberechtigte == "") {
-			  document.getElementById('nachname_erziehungsberechtigte').style.borderColor = "red";
-		  } else {
-			  document.getElementById('nachname_erziehungsberechtigte').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('vorname_erziehungsberechtigte').onblur = function() {
-		
-		  if (vorname_erziehungsberechtigte == "") {
-			  document.getElementById('vorname_erziehungsberechtigte').style.borderColor = "red";
-		  } else {
-			  document.getElementById('vorname_erziehungsberechtigte').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('strasse_erziehungsberechtigte').onblur = function() {
-		
-		  if (strasse_erziehungsberechtigte == "") {
-			  document.getElementById('strasse_erziehungsberechtigte').style.borderColor = "red";
-		  } else {
-			  document.getElementById('strasse_erziehungsberechtigte').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('hausnr_erziehungsberechtigte').onblur = function() {
-		
-		  if (hausnr_erziehungsberechtigte == "") {
-			  document.getElementById('hausnr_erziehungsberechtigte').style.borderColor = "red";
-		  } else {
-			  document.getElementById('hausnr_erziehungsberechtigte').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('plz_erziehungsberechtigte').onblur = function() {
-		
-		  if (plz_erziehungsberechtigte == "") {
-			  document.getElementById('plz_erziehungsberechtigte').style.borderColor = "red";
-		  } else {
-			  document.getElementById('plz_erziehungsberechtigte').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('ort_erziehungsberechtigte').onblur = function() {
-		
-		  if (ort_erziehungsberechtigte == "") {
-			  document.getElementById('ort_erziehungsberechtigte').style.borderColor = "red";
-		  } else {
-			  document.getElementById('ort_erziehungsberechtigte').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('telefon_erziehungsberechtigte').onblur = function() {
-		
-		  if (telefon_erziehungsberechtigte == "") {
-			  document.getElementById('telefon_erziehungsberechtigte').style.borderColor = "red";
-		  } else {
-			  document.getElementById('telefon_erziehungsberechtigte').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('email_erziehungsberechtigte').onblur = function() {
-		
-		  if (email_erziehungsberechtigte == "") {
-			  document.getElementById('email_erziehungsberechtigte').style.borderColor = "red";
-		  } else {
-			  document.getElementById('email_erziehungsberechtigte').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('bundesland_bildungsweg').onblur = function() {
-		
-		  if (bundesland_bildungsweg == "") {
-			  document.getElementById('bundesland_bildungsweg').style.borderColor = "red";
-		  } else {
-			  document.getElementById('bundesland_bildungsweg').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('schulname_bildungsweg').onblur = function() {
-		
-		  if (schulname_bildungsweg == "") {
-			  document.getElementById('schulname_bildungsweg').style.borderColor = "red";
-		  } else {
-			  document.getElementById('schulname_bildungsweg').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('entlassungsjahr_bildungsweg').onblur = function() {
-		
-		  if (entlassungsjahr_bildungsweg == "") {
-			  document.getElementById('entlassungsjahr_bildungsweg').style.borderColor = "red";
-		  } else {
-			  document.getElementById('entlassungsjahr_bildungsweg').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('hoechsterabschluss_bildungsweg').onblur = function() {
-		
-		  if (hoechsterabschluss_bildungsweg == "") {
-			  document.getElementById('hoechsterabschluss_bildungsweg').style.borderColor = "red";
-		  } else {
-			  document.getElementById('hoechsterabschluss_bildungsweg').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('schulbesuchsjahr_bildungsweg').onblur = function() {
-		
-		  if (schulbesuchsjahr_bildungsweg == "") {
-			  document.getElementById('schulbesuchsjahr_bildungsweg').style.borderColor = "red";
-		  } else {
-			  document.getElementById('schulbesuchsjahr_bildungsweg').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('fachrichtung_ausbildung').onblur = function() {
-		
-		  if (fachrichtung_ausbildung == "") {
-			  document.getElementById('fachrichtung_ausbildung').style.borderColor = "red";
-		  } else {
-			  document.getElementById('fachrichtung_ausbildung').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('ausbildungszeit_vom_ausbildung').onblur = function() {
-		
-		  if (ausbildungszeit_vom_ausbildung == "") {
-			  document.getElementById('ausbildungszeit_vom_ausbildung').style.borderColor = "red";
-		  } else {
-			  document.getElementById('ausbildungszeit_vom_ausbildung').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('ausbildungszeit_bis_ausbildung').onblur = function() {
-		
-		  if (ausbildungszeit_bis_ausbildung == "") {
-			  document.getElementById('ausbildungszeit_bis_ausbildung').style.borderColor = "red";
-		  } else {
-			  document.getElementById('ausbildungszeit_bis_ausbildung').style.borderColor = "green";
-		  }
-	};
-	document.getElementById('begruendung_ausbildung').onblur = function() {
-		
-		  if (begruendung_ausbildung == "") {
-			  document.getElementById('begruendung_ausbildung').style.borderColor = "red";
-		  } else {
-			  document.getElementById('begruendung_ausbildung').style.borderColor = "green";
-		  }
-	};
-		
-		if(firma != "" && strasse !=  "" && hausnr != "" && plz != "" && ort != "" && telefon != "" && telefax != "" && vorname != ""
-		&& name != "" && email != "" && nachname_azubi != "" && vorname_azubi != "" && geburtsdatum_azubi != "" && geburtsort_azubi != "" && staatsangehoerigkeit_azubi != ""
-		&& geburtsland_azubi != "" && strasse_azubi != "" && hausnr_azubi != "" && plz_azubi != "" && ort_azubi != "" &&  bundesland_azubi != "" && telefon_azubi != ""
-		&& mobil_azubi != "" && email_azubi != "" && nachname_erziehungsberechtigte != "" && vorname_erziehungsberechtigte != "" && strasse_erziehungsberechtigte != ""
-		&& hausnr_erziehungsberechtigte != "" && plz_erziehungsberechtigte != "" && ort_erziehungsberechtigte != "" && telefon_erziehungsberechtigte != "" && email_erziehungsberechtigte != ""
-		&& bundesland_bildungsweg != "" && schulname_bildungsweg != "" && entlassungsjahr_bildungsweg != "" && hoechsterabschluss_bildungsweg != "" && schulbesuchsjahr_bildungsweg != ""
-		&& fachrichtung_ausbildung != "" && ausbildungszeit_vom_ausbildung != "" && ausbildungszeit_bis_ausbildung != "" && begruendung_ausbildung != "")
-		{
-			document.getElementById('formular_submit').removeAttribute("disabled");
-		} else 
-		{
-			document.getElementById('formular_submit').disabled = true;
-		}	
-
-	});
+	if(username != "" && password != "")
+	{
+		document.getElementById('login_submit').removeAttribute("disabled");
+	} else 
+	{
+		document.getElementById('login_submit').disabled = true;
+	}
+	})
 })
 
 </script>
 
-</head>
-<body>
+	<h1>Loginbereich</h1>
 
-	<h1>Anmeldung zum Besuch der Berufsschule</h1>
-	<h5>per Fax +49 40 428 794 - 450  per E-mail: g18@hibb.hamburg.de</h5>
-</div>
 
-  <form id="AnmeldeForm" class="form-horizontal" method="post" action="/helloWold/anmeldeformularVerarbeitung">
-  	<div id="AnmeldeformularContent">
-  		<div id="Ausbildungsbetrieb_content">
-	  	<h2>Ausbildungsbetrieb</h2>
-		  	<div class="form-group">
-		    	<label class="control-label col-sm-2" for="firma">Firma</label>
-		    	<input type="text" class="form-control" id="firma">
-		    </div>
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="strasse">Strasse</label>
-		        <input type="text" class="form-control" id="strasse">
-		    </div>
-		    <div class="form-group"> 
-		        <label class="control-label col-sm-2" for="hausnr">Hausnr</label>
-		        <input type="text" class="form-control" id="hausnr">
-			</div> 
-			<div class="form-group">
-		        <label class="control-label col-sm-2" for="plz">PLZ</label>
-		        <input type="text" class="form-control" id="plz">
-		    </div> 
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="ort">Ort</label>
-		 	    <input type="text" class="form-control" id="ort">
-		    </div>   
-		    <div class="form-group">   
-		        <label class="control-label col-sm-2" for="telefon">Telefon</label>
-		        <input type="text" class="form-control" id="telefon">    
-		    </div>
-		    <div class="form-group"> 
-		        <label class="control-label col-sm-2" for="telefax">Telefax</label>
-		    	<input type="text" class="form-control" id="telefax"> 
-		    </div>
-			<div class="form-group">
-		        <label class="control-label col-sm-2" for="vorname">Vorname</label>
-		        <input type="text" class="form-control" id="vorname">
-		    </div>
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="name">Name</label>
-		        <input type="text" class="form-control" id="name">  
-		    </div>    
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="email">E-Mail-Adresse</label>
-		    	<input type="text" class="form-control" id="email">
-			</div>
-		    
-<div id="Auszubildeneangaben_content">
-	  	<h2>Angaben zum/zur Auszubildenden</h2>
-		  	<div class="form-group">
-		    	<label class="control-label col-sm-2" for="nachname_azubi">Nachname</label>
-		    	<input type="text" class="form-control" id="nachname_azubi" maxlength="30">
-		    </div>
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="vorname_azubi">Vorname</label>
-		        <input type="text" class="form-control" id="vorname_azubi">
-		    </div>
-		    <div class="form-group"> 
-		        <label class="control-label col-sm-2" for="geburtsdatum_azubi">Geburtsdatum</label>
-		        <input type="text" class="form-control" id="geburtsdatum_azubi">
-			</div> 
-			<div class="form-group">
-		        <label class="control-label col-sm-2" for="geburtsort_azubi">Geburtsort</label>
-		        <input type="text" class="form-control" id="geburtsort_azubi">
-		    </div> 
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="staatsangehoerigkeit_azubi">Staatsangehörigkeit</label>
-		 	    <input type="text" class="form-control" id="staatsangehoerigkeit_azubi">
-		    </div>   
-		  
-		    <div class="form-group"> 
-		        <label class="control-label col-sm-2" for="geburtsland_azubi">Geburtsland(nur Ausländer)</label>
-		    	<input type="text" class="form-control" id="geburtsland_azubi"> 
-		    </div>
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="strasse_azubi">Strasse</label>
-		        <input type="text" class="form-control" id="strasse_azubi">
-		    </div>
-		    <div class="form-group"> 
-		        <label class="control-label col-sm-2" for="hausnr_azubi">Hausnr</label>
-		        <input type="text" class="form-control" id="hausnr_azubi">
-			</div> 
-			<div class="form-group">
-		        <label class="control-label col-sm-2" for="plz_azubi">PLZ</label>
-		        <input type="text" class="form-control" id="plz_azubi">
-		    </div> 
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="ort_azubi">Ort</label>
-		 	    <input type="text" class="form-control" id="ort_azubi">
-		    </div>   
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="bundesland_azubi">Bundesland</label>
-		 	    <input type="text" class="form-control" id="bundesland_azubi">
-		    </div>
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="telefon_azubi">Telefon</label>
-		    	<input type="text" class="form-control" id="telefon_azubi">
-			</div>
-			<div class="form-group">
-		        <label class="control-label col-sm-2" for="mobil_azubi">Mobil</label>
-		    	<input type="text" class="form-control" id="mobil_azubi">
-			</div>  
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="email_azubi">E-Mail-Adresse</label>
-		    	<input type="text" class="form-control" id="email_azubi">
-			</div>
-</div>
+<div id="loginContent">
 
-<div id="Erziehungsberechitgeangaben_content">
-	  	<h2>Angaben zu den Erziehungsberechtigten (bei Auszubildenden unter 18 Jahren)</h2>
-		  	<div class="form-group">
-		    	<label class="control-label col-sm-2" for="nachname_erziehungsberechtigte">Nachname</label>
-		    	<input type="text" class="form-control" id="nachname_erziehungsberechtigte" maxlength="30">
-		    </div>
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="vorname_erziehungsberechtigte">Vorname</label>
-		        <input type="text" class="form-control" id="vorname_erziehungsberechtigte">
-		    </div>
-		
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="strasse_erziehungsberechtigte">Strasse</label>
-		        <input type="text" class="form-control" id="strasse_erziehungsberechtigte">
-		    </div>
-		    <div class="form-group"> 
-		        <label class="control-label col-sm-2" for="hausnr_erziehungsberechtigte">Hausnr</label>
-		        <input type="text" class="form-control" id="hausnr_erziehungsberechtigte">
-			</div> 
-			<div class="form-group">
-		        <label class="control-label col-sm-2" for="plz_erziehungsberechtigte">PLZ</label>
-		        <input type="text" class="form-control" id="plz_erziehungsberechtigte">
-		    </div> 
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="ort_erziehungsberechtigte">Ort</label>
-		 	    <input type="text" class="form-control" id="ort_erziehungsberechtigte">
-		    </div>   
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="telefon_erziehungsberechtigte">Telefon</label>
-		    	<input type="text" class="form-control" id="telefon_erziehungsberechtigte">
-			</div>
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="email_erziehungsberechtigte">E-Mail-Adresse</label>
-		    	<input type="text" class="form-control" id="email_erziehungsberechtigte">
-			</div>
-</div>
 
-<div id="Bildungswegegeangaben_content">
-	  	<h2>Angaben zum Bildungsweg des/der Auszubildenden</h2>
-		  	<div class="form-group">
-		    	<label class="control-label col-sm-2" for="schulname_bildungsweg">Name, Leitzeichen der letzten Schule</label>
-		    	<input type="text" class="form-control" id="schulname_bildungsweg" maxlength="30">
-		    </div>
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="bundesland_bildungsweg">Bundesland</label>
-		        <input type="text" class="form-control" id="bundesland_bildungsweg">
-		    </div>
-		
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="entlassungsjahr_bildungsweg">Entlassungsjahr</label>
-		        <input type="text" class="form-control" id="entlassungsjahr_bildungsweg">
-		    </div>
-			
-			<div class="form-group">
-		    	<label class="control-label col-sm-2" for="hoechsterabschluss_bildungsweg">Höchster	Schulabschluss</label>
-		        <input type="text" class="form-control" id="hoechsterabschluss_bildungsweg">
-		    </div>
-				
-			<div class="form-group">
-		        <label class="control-label col-sm-2" for="schulbesuchsjahr_bildungsweg">Schulbesuchsjahre</label>
-		        <input type="text" class="form-control" id="schulbesuchsjahr_bildungsweg">
-		    </div>
-</div>
+    <form id="loginForm" method="post" action="/helloWorld/anmeldung">
 
-<div id="Ausbildungangaben_content">
-	  	<h2>Angaben zur Ausbildung (Angaben soweit vorhanden)</h2>	
-			<div class="form-group">
-		    	<label class="control-label col-sm-2" for="fachrichtung_ausbildung">Fachrichtung</label>
-		        <input type="text" class="form-control" id="fachrichtung_ausbildung">
-		    </div>
-				
-			<div class="form-group">
-		        <label class="control-label col-sm-2" for="ausbildungszeit_vom_ausbildung">Ausbildungszeit vom</label>
-		        <input type="text" class="form-control" id="ausbildungszeit_vom_ausbildung">
-		        <label class="control-label col-sm-2" for="ausbildungszeit_bis_ausbildung">bis</label>
-		        <input type="text" class="form-control" id="ausbildungszeit_bis_ausbildung">
-		    </div>
-		    
-		   <div class="form-group">
-		    	<label class="control-label col-sm-2" for="begruendung_ausbildung">Begründung bei verkürzter Ausbildung</label>
-		        <input type="text" class="form-control" id="begruendung_ausbildung">
-		   </div>
-</div>
-	
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-			    	<button type="submit" id="formular_submit" class="btn btn-default" disabled="disabled">Submit</button>
-			    </div>
-			</div>
+        <div class="form-group">
 
-</form>
+            <label for="username" class="control-label col-xs-2">Benutzername</label>
+
+            <div class="col-xs-10">
+
+                <input type="text" class="form-control" id="username" name="username" placeholder="Benutzername">
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="password" class="control-label col-xs-2">Password</label>
+
+            <div class="col-xs-10">
+
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-xs-offset-2 col-xs-10">
+
+                <button type="submit" id="login_submit" class="btn btn-primary" disabled="disabled">Login</button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+
 </div>
 
 </body>
