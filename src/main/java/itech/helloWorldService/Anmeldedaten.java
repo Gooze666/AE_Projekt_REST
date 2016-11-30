@@ -60,6 +60,7 @@ public class Anmeldedaten {
 			String hoechsterabschluss_bildungsweg, String schulbesuchsjahr_bildungsweg, String fachrichtung_ausbildung,
 			String ausbildungszeit_vom_ausbildung, String ausbildungszeit_bis_ausbildung,
 			String begruendung_ausbildung) {
+		
 		this.setFirma(firma);
 		this.setStrasse(strasse);
 		this.setHausnr(hausnr);
