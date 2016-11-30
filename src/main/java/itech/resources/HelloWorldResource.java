@@ -87,6 +87,32 @@ public class HelloWorldResource extends JerseyClient {
     	BufferedReader r;
     	StringBuilder sb = new StringBuilder();
 		try {
+<<<<<<< HEAD
+			r = new BufferedReader(new FileReader("/AE_Projekt_REST/src/main/resources/loginscreen.html"));
+=======
+			r = new BufferedReader(new FileReader("/AE_Projekt_REST/src/main/resources/anmeldeformular.html"));
+>>>>>>> feature
+		      
+			String line = null;
+			while((line=r.readLine())!=null)
+			   sb.append(line);
+			r.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        String loginScreen = sb.toString();
+        return loginScreen;
+    }
+    
+<<<<<<< HEAD
+=======
+    @Path("/loginscreen")
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    public String loginScreenString() {
+    	BufferedReader r;
+    	StringBuilder sb = new StringBuilder();
+		try {
 			r = new BufferedReader(new FileReader("/AE_Projekt_REST/src/main/resources/loginscreen.html"));
 		      
 			String line = null;
@@ -101,6 +127,7 @@ public class HelloWorldResource extends JerseyClient {
         return loginScreen;
     }
     
+>>>>>>> feature
     @Path("/anmeldung")
     @POST
     @Produces(MediaType.TEXT_PLAIN)
