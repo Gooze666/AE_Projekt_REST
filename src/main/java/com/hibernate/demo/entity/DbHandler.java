@@ -14,7 +14,7 @@ public class DbHandler {
 	Session session;
 	List<Benutzer> benutzerList;
 	List<Schueler> schuelerList;
-	
+
 	// Creates the factory
 	void createSessionFactory() {
 		this.factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Benutzer.class)
@@ -23,8 +23,8 @@ public class DbHandler {
 
 	// Creates the session
 	void createSession() {
-		if (factory != null){
-		this.session = factory.getCurrentSession();
+		if (factory != null) {
+			this.session = factory.getCurrentSession();
 		} else {
 			System.out.println("There was no factory found to create a session.");
 		}
@@ -65,14 +65,14 @@ public class DbHandler {
 			closeSession();
 		}
 	}
-	
+
 	// Creates a Schueler.
-	void createSchueler(int institutionsid, JSONObject formuldardaten, String besteatigt) {
+	void createSchueler(int institutionsid, String formulardaten, String besteatigt) {
 		createSessionFactory();
 		createSession();
 		try {
 			System.out.println("Creating new Schueler object...");
-			Schueler tempSchueler = new Schueler(institutionsid, formuldardaten, besteatigt);
+			Schueler tempSchueler = new Schueler(institutionsid, formulardaten, besteatigt);
 
 			// start a transaction
 			session.beginTransaction();
@@ -92,9 +92,9 @@ public class DbHandler {
 			closeSession();
 		}
 	}
-	
-	// retrieves a list of all Benutzers.
-	List<Benutzer> getBenutzer(){
+
+	// Retrieves a list of all Benutzers.
+	List<Benutzer> getBenutzer() {
 		createSessionFactory();
 		createSession();
 		try {
@@ -103,11 +103,10 @@ public class DbHandler {
 
 			// fill list with Benutzers
 			benutzerList = session.createQuery("from Benutzer").list();
-			
+
 			// commit transaction
 			session.getTransaction().commit();
-			
-			
+
 			System.out.println("Done!");
 
 		} catch (Exception ex) {
@@ -117,9 +116,9 @@ public class DbHandler {
 		}
 		return benutzerList;
 	}
-	
-	// retrieves a list of all Schuelers.
-	List<Schueler> getSchueler(){
+
+	// Retrieves a list of all Schuelers.
+	List<Schueler> getSchueler() {
 		createSessionFactory();
 		createSession();
 		try {
@@ -128,10 +127,10 @@ public class DbHandler {
 
 			// fill list with Benutzers
 			schuelerList = session.createQuery("from Schueler").list();
-			
+
 			// commit transaction
 			session.getTransaction().commit();
-						
+
 			System.out.println("Done!");
 
 		} catch (Exception ex) {
@@ -140,5 +139,107 @@ public class DbHandler {
 			closeSession();
 		}
 		return schuelerList;
+	}
+
+	// Update existing status of a Schueler.
+	void updateBesteatigtStatus(int schuelerId, String status) {
+		createSessionFactory();
+		createSession();
+		int id = schuelerId;
+		String statusNeu = status;
+		try {
+			// start a transaction
+			session.beginTransaction();
+
+			Schueler tempSchueler = (Schueler) session.get(Schueler.class, id);
+
+			tempSchueler.setBestaetigt(statusNeu);
+
+			// commit transaction
+			session.getTransaction().commit();
+
+			System.out.println("Done!");
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			closeSession();
+		}
+	}
+
+	// Update existing formula data of a Schueler.
+	void updateFormulardaten(int schuelerId, String daten) {
+		createSessionFactory();
+		createSession();
+		int id = schuelerId;
+		String datenNeu = daten;
+		try {
+			// start a transaction
+			session.beginTransaction();
+
+			Schueler tempSchueler = (Schueler) session.get(Schueler.class, id);
+
+			tempSchueler.setFormuldardaten(datenNeu);
+
+			// commit transaction
+			session.getTransaction().commit();
+
+			System.out.println("Done!");
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			closeSession();
+		}
+	}
+
+	// Delete existing Schueler.
+	void deleteSchueler(int schuelerId) {
+		createSessionFactory();
+		createSession();
+		int id = schuelerId;
+		try {
+			// start a transaction
+			session.beginTransaction();
+
+			Schueler tempSchueler = (Schueler) session.get(Schueler.class, id);
+
+			session.delete(tempSchueler);
+
+			// commit transaction
+			session.getTransaction().commit();
+
+			System.out.println("Done!");
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			closeSession();
+		}
+	}
+
+	// Delete existing Benutzer.
+	void deleteBenutzer(int benutzerId) {
+		createSessionFactory();
+		createSession();
+		int id = benutzerId;
+		try {
+			// start a transaction
+			session.beginTransaction();
+
+			Benutzer tempBenutzer = (Benutzer) session.get(Benutzer.class, id);
+
+			session.delete(tempBenutzer);
+
+			// commit transaction
+			session.getTransaction().commit();
+
+			System.out.println("Done!");
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			closeSession();
+		}
 	}
 }

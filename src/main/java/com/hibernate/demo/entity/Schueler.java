@@ -18,7 +18,7 @@ public class Schueler {
 	private int institution_id;
 
 	@Column(name = "formulardaten")
-	private JSONObject formuldardaten;
+	private String formuldardaten;
 
 	@Column(name = "bestaetigt")
 	private String bestaetigt;
@@ -27,7 +27,7 @@ public class Schueler {
 
 	}
 
-	public Schueler(int institution_id, JSONObject formuldardaten, String bestaetigt) {
+	public Schueler(int institution_id, String formuldardaten, String bestaetigt) {
 		this.institution_id = institution_id;
 		this.formuldardaten = formuldardaten;
 		this.bestaetigt = bestaetigt;
@@ -49,11 +49,11 @@ public class Schueler {
 		this.institution_id = institution_id;
 	}
 
-	public JSONObject getFormuldardaten() {
+	public String getFormuldardaten() {
 		return formuldardaten;
 	}
 
-	public void setFormuldardaten(JSONObject formuldardaten) {
+	public void setFormuldardaten(String formuldardaten) {
 		this.formuldardaten = formuldardaten;
 	}
 

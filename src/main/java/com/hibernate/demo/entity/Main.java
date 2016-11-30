@@ -13,8 +13,11 @@ public class Main {
 //			System.out.println(tempBenutzer);
 //		}
 		
-		db.createSchueler(1, new JSONObject(), "N");
+		//db.createSchueler(1, new JSONObject(), "N");
 		
+		// db.updateBesteatigtStatus(1, "J");
+		
+		db.deleteSchueler(3);
 	}
 
 }
