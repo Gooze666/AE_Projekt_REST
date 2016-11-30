@@ -24,6 +24,7 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
 
@@ -37,21 +38,35 @@ public class ItechResource extends JerseyClient {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String presentLogin() {
-    	return Itech.getResource("anmeldeformular.html");
+    	return Itech.getResource("loginscreen.html");
     }
     
     @Path("/login")
     @POST
     @Produces(MediaType.TEXT_HTML)
-    public String processLogin() {
-    	return Itech.getResource("banner.txt");
+    public String processLogin(
+    		@FormParam("username") String username,
+    		@FormParam("password") String password) {
+    	//ToDo: check password
+    	if(
+    	//checkpassword(username,password)==		
+    		false)
+    	{
+    		return presentLogin();
+    	}
+    	switch(username)
+    	{
+    	case "ceo": return formular();
+    	case "löwe": return list();
+    	default: return presentLogin();
+    	}
     }
     
     @Path("/formular")
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String formular() {
-        return "<html><body>formular</body></html>";
+    	return Itech.getResource("anmeldeformular.html");
     }
     
     @Path("/list")
@@ -62,11 +77,12 @@ public class ItechResource extends JerseyClient {
     }
     
     @Path("/schueler")
-    @POST
+    @POST @Consumes("application/x-www-form-urlencoded")
     @Produces(MediaType.TEXT_HTML)
     public String createSchueler(
-    		@FormParam("json") String schueler) {
-        return "<html><body>schueler?json="+schueler+"</body></html>";
+    		final MultivaluedMap<String, String> formParams) {
+        return "<html><body>"+formParams.toString()+"</body></html>";
+        
     }
     
     @Path("/schueler/{id}")
@@ -74,15 +90,16 @@ public class ItechResource extends JerseyClient {
     @Produces(MediaType.APPLICATION_JSON)
     public String readSchueler(
     		@PathParam("id") long id) {
-    	final class bla
+    	final class Schueler
     	{
-    		public int eins = 5;
-    		public int zwei = 10;
+    		public String vorname = "eins";
+    		public String nachname = "zwei";
     	};
-    	
+    	Schueler schueler = new Schueler();
+    	//ToDo: Read Schueler from database
     	ObjectMapper MAPPER = new ObjectMapper();
     	try {
-			return MAPPER.writeValueAsString(new bla());
+			return MAPPER.writeValueAsString(schueler);
 		} catch (JsonProcessingException e) {
 			return "";
 		}
@@ -93,23 +110,18 @@ public class ItechResource extends JerseyClient {
     @Produces(MediaType.TEXT_HTML)
     public String deleteSchueler(
     		@PathParam("id") long id) {
-        // TODO: delete in database
-    	return client.target("http://localhost:18181")
-        		.path("itech").path("list")
-        		.request(MediaType.TEXT_HTML)
-        		.get().toString();
+        // TODO: remove id from database
+    	return list();
     }
     
     @Path("/schueler/{id}")
-    @PUT
+    @PUT @Consumes("application/x-www-form-urlencoded")
     @Produces(MediaType.TEXT_HTML)
     public String updateSchueler(
-    		@PathParam("id") long id) {
-    	// TODO: update in database
-    	return client.target("http://localhost:18181")
-        		.path("itech").path("list")
-        		.request(MediaType.TEXT_HTML)
-        		.get().toString();
+    		@PathParam("id") long id,
+    		final MultivaluedMap<String, String> formParams) {
+    	// TODO: update id in database
+    	return list();
     }
 
 }
