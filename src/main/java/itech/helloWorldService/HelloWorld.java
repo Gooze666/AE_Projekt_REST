@@ -16,11 +16,4 @@ public class HelloWorld {
         } else {salutation = "lieber";}
 
         return "Hallo Welt! " + "Hallo " + salutation + " " + name + "!"; }
-    
-  public static String testAdvanced(){
-	  return "Just awesome!";
-  }
-  
-
-  
 }
