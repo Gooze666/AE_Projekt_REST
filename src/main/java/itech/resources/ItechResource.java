@@ -81,8 +81,18 @@ public class ItechResource extends JerseyClient {
     @Produces(MediaType.TEXT_HTML)
     public String createSchueler(
     		final MultivaluedMap<String, String> formParams) {
+    	//todo: create json from params and give to service
         return "<html><body>"+formParams.toString()+"</body></html>";
         
+    }
+    
+    @Path("/speicher")
+    @POST @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String speicherSchueler(
+    		String jsonData) {
+    	//todo: insert data into database
+    	return "done";
     }
     
     @Path("/schueler/{id}")
