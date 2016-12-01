@@ -5,6 +5,66 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <style>
+
+#AnmeldeformularContent input, #formular_submit {
+width: 300px;
+}
+
+#formular_submit {
+margin-left: -14px;
+}
+
+#AnmeldeformularContent label {
+width: 100%;
+margin: 0 auto;
+}
+
+#AnmeldeformularContent {
+display: inline-block;
+width: 100%;
+text-align: center;
+background: grey;
+border-radius: 5px;
+margin: 1%;
+}
+
+#AnmeldeformularContent .form-group{
+margin-left: 25%;
+height: 100%;
+
+}
+
+#Ausbildungsbetrieb_content, #Auszubildeneangaben_content, #Erziehungsberechitgeangaben_content, #Bildungswegegeangaben_content, #Ausbildungangaben_content {
+display: inline-block;
+}
+
+.left_content {
+float: left;
+}
+
+.right_content {
+float: right;
+}
+
+h1, h2, h5 {
+text-align: center;
+}
+
+h1 {
+font-size: 26px !important;
+}
+
+h2 {
+font-size: 18px !important;
+margin-top: 20px !important;
+margin-bottom: 20px !important;
+font-weight: bold !important;
+}
+
+h5 {
+font-size: 12px !important;
+}
+
 /*!
  * Bootstrap v4.0.0-alpha.5 (https://getbootstrap.com)
  * Copyright 2011-2016 The Bootstrap Authors
@@ -7144,206 +7204,221 @@ $(document).ready(function()
 
 	<h1>Anmeldung zum Besuch der Berufsschule</h1>
 	<h5>per Fax +49 40 428 794 - 450  per E-mail: g18@hibb.hamburg.de</h5>
-</div>
 
-  <form id="AnmeldeForm" class="form-horizontal" method="post" action="/helloWold/anmeldeformularVerarbeitung">
+  <form id="AnmeldeForm" class="form-horizontal" method="post" action="/helloWorld/anmeldeformularVerarbeitung">
   	<div id="AnmeldeformularContent">
   		<div id="Ausbildungsbetrieb_content">
 	  	<h2>Ausbildungsbetrieb</h2>
+	  	<div class="left_content">
 		  	<div class="form-group">
 		    	<label class="control-label col-sm-2" for="firma">Firma</label>
-		    	<input type="text" class="form-control" id="firma">
+		    	<input type="text" class="form-control" name="firma" id="firma">
 		    </div>
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="strasse">Strasse</label>
-		        <input type="text" class="form-control" id="strasse">
+		        <input type="text" class="form-control" name="strasse" id="strasse">
 		    </div>
 		    <div class="form-group"> 
 		        <label class="control-label col-sm-2" for="hausnr">Hausnr</label>
-		        <input type="text" class="form-control" id="hausnr">
+		        <input type="text" class="form-control" name="hausnr" id="hausnr">
 			</div> 
 			<div class="form-group">
 		        <label class="control-label col-sm-2" for="plz">PLZ</label>
-		        <input type="text" class="form-control" id="plz">
+		        <input type="text" class="form-control" name="plz" id="plz">
 		    </div> 
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="ort">Ort</label>
-		 	    <input type="text" class="form-control" id="ort">
-		    </div>   
+		 	    <input type="text" class="form-control" name="ort" id="ort">
+		    </div> 
+		 </div>
+		 <div class="right_content">
 		    <div class="form-group">   
 		        <label class="control-label col-sm-2" for="telefon">Telefon</label>
-		        <input type="text" class="form-control" id="telefon">    
+		        <input type="text" class="form-control" name="telefon" id="telefon">    
 		    </div>
 		    <div class="form-group"> 
 		        <label class="control-label col-sm-2" for="telefax">Telefax</label>
-		    	<input type="text" class="form-control" id="telefax"> 
+		    	<input type="text" class="form-control" name="telefax" id="telefax"> 
 		    </div>
 			<div class="form-group">
 		        <label class="control-label col-sm-2" for="vorname">Vorname</label>
-		        <input type="text" class="form-control" id="vorname">
+		        <input type="text" class="form-control" name="vorname" id="vorname">
 		    </div>
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="name">Name</label>
-		        <input type="text" class="form-control" id="name">  
+		        <input type="text" class="form-control" name="name" id="name">  
 		    </div>    
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="email">E-Mail-Adresse</label>
-		    	<input type="text" class="form-control" id="email">
+		    	<input type="text" class="form-control" name="email" id="email">
 			</div>
-		    
+		</div>
+</div>		    
+
 <div id="Auszubildeneangaben_content">
 	  	<h2>Angaben zum/zur Auszubildenden</h2>
+	  	<div class="left_content">
 		  	<div class="form-group">
 		    	<label class="control-label col-sm-2" for="nachname_azubi">Nachname</label>
-		    	<input type="text" class="form-control" id="nachname_azubi" maxlength="30">
+		    	<input type="text" class="form-control" id="nachname_azubi" name="nachname_azubi">
 		    </div>
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="vorname_azubi">Vorname</label>
-		        <input type="text" class="form-control" id="vorname_azubi">
+		        <input type="text" class="form-control" id="vorname_azubi" name="vorname_azubi">
 		    </div>
 		    <div class="form-group"> 
 		        <label class="control-label col-sm-2" for="geburtsdatum_azubi">Geburtsdatum</label>
-		        <input type="text" class="form-control" id="geburtsdatum_azubi">
+		        <input type="text" class="form-control" id="geburtsdatum_azubi" name="geburtsdatum_azubi">
 			</div> 
 			<div class="form-group">
 		        <label class="control-label col-sm-2" for="geburtsort_azubi">Geburtsort</label>
-		        <input type="text" class="form-control" id="geburtsort_azubi">
+		        <input type="text" class="form-control" id="geburtsort_azubi" name="geburtsort_azubi">
 		    </div> 
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="staatsangehoerigkeit_azubi">Staatsangehörigkeit</label>
-		 	    <input type="text" class="form-control" id="staatsangehoerigkeit_azubi">
+		 	    <input type="text" class="form-control" id="staatsangehoerigkeit_azubi" name="staatsangehoerigkeit_azubi">
 		    </div>   
-		  
 		    <div class="form-group"> 
-		        <label class="control-label col-sm-2" for="geburtsland_azubi">Geburtsland(nur Ausländer)</label>
-		    	<input type="text" class="form-control" id="geburtsland_azubi"> 
+		        <label class="control-label col-sm-2" for="geburtsland_azubi">Geburtsland</label>
+		    	<input type="text" class="form-control" id="geburtsland_azubi" name="geburtsland_azubi"> 
 		    </div>
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="strasse_azubi">Strasse</label>
-		        <input type="text" class="form-control" id="strasse_azubi">
-		    </div>
-		    <div class="form-group"> 
-		        <label class="control-label col-sm-2" for="hausnr_azubi">Hausnr</label>
-		        <input type="text" class="form-control" id="hausnr_azubi">
-			</div> 
 			<div class="form-group">
-		        <label class="control-label col-sm-2" for="plz_azubi">PLZ</label>
-		        <input type="text" class="form-control" id="plz_azubi">
-		    </div> 
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="ort_azubi">Ort</label>
-		 	    <input type="text" class="form-control" id="ort_azubi">
-		    </div>   
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="bundesland_azubi">Bundesland</label>
-		 	    <input type="text" class="form-control" id="bundesland_azubi">
-		    </div>
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="telefon_azubi">Telefon</label>
-		    	<input type="text" class="form-control" id="telefon_azubi">
+			     <label class="control-label col-sm-2" for="strasse_azubi">Strasse</label>
+			     <input type="text" class="form-control" id="strasse_azubi" name="strasse_azubi">
 			</div>
-			<div class="form-group">
-		        <label class="control-label col-sm-2" for="mobil_azubi">Mobil</label>
-		    	<input type="text" class="form-control" id="mobil_azubi">
-			</div>  
-		    <div class="form-group">
-		        <label class="control-label col-sm-2" for="email_azubi">E-Mail-Adresse</label>
-		    	<input type="text" class="form-control" id="email_azubi">
-			</div>
+		  </div>
+		  <div class="right_content">
+			    <div class="form-group"> 
+			        <label class="control-label col-sm-2" for="hausnr_azubi">Hausnr</label>
+			        <input type="text" class="form-control" id="hausnr_azubi" name="hausnr_azubi">
+				</div> 
+				<div class="form-group">
+			        <label class="control-label col-sm-2" for="plz_azubi">PLZ</label>
+			        <input type="text" class="form-control" id="plz_azubi" name="plz_azubi">
+			    </div> 
+			    <div class="form-group">
+			        <label class="control-label col-sm-2" for="ort_azubi">Ort</label>
+			 	    <input type="text" class="form-control" id="ort_azubi" name="ort_azubi">
+			    </div>   
+			    <div class="form-group">
+			        <label class="control-label col-sm-2" for="bundesland_azubi">Bundesland</label>
+			 	    <input type="text" class="form-control" id="bundesland_azubi" name="bundesland_azubi">
+			    </div>
+			    <div class="form-group">
+			        <label class="control-label col-sm-2" for="telefon_azubi">Telefon</label>
+			    	<input type="text" class="form-control" id="telefon_azubi" name="telefon_azubi">
+				</div>
+				<div class="form-group">
+			        <label class="control-label col-sm-2" for="mobil_azubi">Mobil</label>
+			    	<input type="text" class="form-control" id="mobil_azubi" name="mobil_azubi">
+				</div>  
+			    <div class="form-group">
+			        <label class="control-label col-sm-2" for="email_azubi">E-Mail-Adresse</label>
+			    	<input type="text" class="form-control" id="email_azubi" name="email_azubi">
+				</div>
+		</div>
 </div>
 
 <div id="Erziehungsberechitgeangaben_content">
 	  	<h2>Angaben zu den Erziehungsberechtigten (bei Auszubildenden unter 18 Jahren)</h2>
+		<div class="left_content">
 		  	<div class="form-group">
 		    	<label class="control-label col-sm-2" for="nachname_erziehungsberechtigte">Nachname</label>
-		    	<input type="text" class="form-control" id="nachname_erziehungsberechtigte" maxlength="30">
+		    	<input type="text" class="form-control" id="nachname_erziehungsberechtigte" name="nachname_erziehungsberechtigte">
 		    </div>
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="vorname_erziehungsberechtigte">Vorname</label>
-		        <input type="text" class="form-control" id="vorname_erziehungsberechtigte">
+		        <input type="text" class="form-control" id="vorname_erziehungsberechtigte" name="vorname_erziehungsberechtigte">
 		    </div>
 		
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="strasse_erziehungsberechtigte">Strasse</label>
-		        <input type="text" class="form-control" id="strasse_erziehungsberechtigte">
+		        <input type="text" class="form-control" id="strasse_erziehungsberechtigte" name="strasse_erziehungsberechtigte">
 		    </div>
 		    <div class="form-group"> 
 		        <label class="control-label col-sm-2" for="hausnr_erziehungsberechtigte">Hausnr</label>
-		        <input type="text" class="form-control" id="hausnr_erziehungsberechtigte">
+		        <input type="text" class="form-control" id="hausnr_erziehungsberechtigte" name="hausnr_erziehungsberechtigte">
 			</div> 
 			<div class="form-group">
 		        <label class="control-label col-sm-2" for="plz_erziehungsberechtigte">PLZ</label>
-		        <input type="text" class="form-control" id="plz_erziehungsberechtigte">
-		    </div> 
+		        <input type="text" class="form-control" id="plz_erziehungsberechtigte" name="plz_erziehungsberechtigte">
+		    </div>
+		  </div>
+		  <div class="right_content"> 
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="ort_erziehungsberechtigte">Ort</label>
-		 	    <input type="text" class="form-control" id="ort_erziehungsberechtigte">
+		 	    <input type="text" class="form-control" id="ort_erziehungsberechtigte" name="ort_erziehungsberechtigte">
 		    </div>   
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="telefon_erziehungsberechtigte">Telefon</label>
-		    	<input type="text" class="form-control" id="telefon_erziehungsberechtigte">
+		    	<input type="text" class="form-control" id="telefon_erziehungsberechtigte" name="telefon_erziehungsberechtigte">
 			</div>
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="email_erziehungsberechtigte">E-Mail-Adresse</label>
-		    	<input type="text" class="form-control" id="email_erziehungsberechtigte">
+		    	<input type="text" class="form-control" id="email_erziehungsberechtigte" name="email_erziehungsberechtigte">
 			</div>
+		</div>
 </div>
 
 <div id="Bildungswegegeangaben_content">
 	  	<h2>Angaben zum Bildungsweg des/der Auszubildenden</h2>
+	  	<div class="left_content">
 		  	<div class="form-group">
-		    	<label class="control-label col-sm-2" for="schulname_bildungsweg">Name, Leitzeichen der letzten Schule</label>
-		    	<input type="text" class="form-control" id="schulname_bildungsweg" maxlength="30">
+		    	<label class="control-label col-sm-2" for="schulname_bildungsweg">Name der letzten Schule</label>
+		    	<input type="text" class="form-control" id="schulname_bildungsweg" name="schulname_bildungsweg">
 		    </div>
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="bundesland_bildungsweg">Bundesland</label>
-		        <input type="text" class="form-control" id="bundesland_bildungsweg">
+		        <input type="text" class="form-control" id="bundesland_bildungsweg" name="bundesland_bildungsweg">
 		    </div>
 		
 		    <div class="form-group">
 		        <label class="control-label col-sm-2" for="entlassungsjahr_bildungsweg">Entlassungsjahr</label>
-		        <input type="text" class="form-control" id="entlassungsjahr_bildungsweg">
+		        <input type="text" class="form-control" id="entlassungsjahr_bildungsweg" name="entlassungsjahr_bildungsweg">
 		    </div>
 			
 			<div class="form-group">
 		    	<label class="control-label col-sm-2" for="hoechsterabschluss_bildungsweg">Höchster	Schulabschluss</label>
-		        <input type="text" class="form-control" id="hoechsterabschluss_bildungsweg">
+		        <input type="text" class="form-control" id="hoechsterabschluss_bildungsweg" name="hoechsterabschluss_bildungsweg">
 		    </div>
 				
 			<div class="form-group">
 		        <label class="control-label col-sm-2" for="schulbesuchsjahr_bildungsweg">Schulbesuchsjahre</label>
-		        <input type="text" class="form-control" id="schulbesuchsjahr_bildungsweg">
+		        <input type="text" class="form-control" id="schulbesuchsjahr_bildungsweg" name="schulbesuchsjahr_bildungsweg">
+		    </div>
 		    </div>
 </div>
 
 <div id="Ausbildungangaben_content">
-	  	<h2>Angaben zur Ausbildung (Angaben soweit vorhanden)</h2>	
+	  	<h2>Angaben zur Ausbildung (Angaben soweit vorhanden)</h2>
+	  	<div class="right_content">
 			<div class="form-group">
 		    	<label class="control-label col-sm-2" for="fachrichtung_ausbildung">Fachrichtung</label>
-		        <input type="text" class="form-control" id="fachrichtung_ausbildung">
+		        <input type="text" class="form-control" id="fachrichtung_ausbildung" name="fachrichtung_ausbildung">
 		    </div>
 				
 			<div class="form-group">
 		        <label class="control-label col-sm-2" for="ausbildungszeit_vom_ausbildung">Ausbildungszeit vom</label>
-		        <input type="text" class="form-control" id="ausbildungszeit_vom_ausbildung">
+		        <input type="text" class="form-control" id="ausbildungszeit_vom_ausbildung" name="ausbildungszeit_vom_ausbildung">
 		        <label class="control-label col-sm-2" for="ausbildungszeit_bis_ausbildung">bis</label>
-		        <input type="text" class="form-control" id="ausbildungszeit_bis_ausbildung">
+		        <input type="text" class="form-control" id="ausbildungszeit_bis_ausbildung" name="ausbildungszeit_bis_ausbildung">
 		    </div>
 		    
 		   <div class="form-group">
 		    	<label class="control-label col-sm-2" for="begruendung_ausbildung">Begründung bei verkürzter Ausbildung</label>
-		        <input type="text" class="form-control" id="begruendung_ausbildung">
+		        <input type="text" class="form-control" id="begruendung_ausbildung" name="schulname_bildungsweg">
 		   </div>
-</div>
+
 	
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 			    	<button type="submit" id="formular_submit" class="btn btn-default" disabled="disabled">Submit</button>
 			    </div>
 			</div>
-
-</form>
+			</div>
 </div>
+</div>
+</form>
 
 </body>
 </html>
