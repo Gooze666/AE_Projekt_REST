@@ -17,6 +17,7 @@ public class HelloWorldClient {
     private Client client;
     public HelloWorldClient(Client client) { this.client = client; }
 
+    
     @GET
     @Path("helloWorldText")
     public Response consumeHelloWorld() {

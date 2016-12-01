@@ -63,6 +63,7 @@ public class Schueler {
 	public void setBestaetigt(String bestaetigt) {
 		this.bestaetigt = bestaetigt;
 	}
+	
 
 	@Override
 	public String toString() {

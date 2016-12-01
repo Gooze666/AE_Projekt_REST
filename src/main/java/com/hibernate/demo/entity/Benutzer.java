@@ -19,6 +19,7 @@ public class Benutzer {
 	@Column(name = "ist_admin")
 	private String ist_admin;
 
+	
 	@Column(name = "passwort")
 	private String passwort;
 

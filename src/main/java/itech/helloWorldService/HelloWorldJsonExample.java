@@ -14,7 +14,6 @@ public class HelloWorldJsonExample {
     private String helloWorld;
 
     public HelloWorldJsonExample () {
-
     }
 
     public HelloWorldJsonExample(String language, String helloWorld) {

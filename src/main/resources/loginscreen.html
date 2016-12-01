@@ -5,6 +5,51 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <style>
+
+#loginContent {
+display: inline-block;
+width: 400px;
+background: grey;
+border-radius: 5px;
+margin: 0 auto;
+margin-left: 25%;
+padding: 10px;
+}
+
+
+#login_content {
+display: inline-block;
+}
+
+#loginContent input, #login_submit {
+width: 300px;
+padding: 10px;
+margin: 10px;
+}
+
+#loginContent label {
+width: 100%;
+margin: 10px;
+}
+
+h1, h2, h5 {
+text-align: center;
+}
+
+h1 {
+font-size: 26px !important;
+}
+
+h2 {
+font-size: 18px !important;
+margin-top: 20px !important;
+margin-bottom: 20px !important;
+font-weight: bold !important;
+}
+
+h5 {
+font-size: 12px !important;
+}
 /*!
  * Bootstrap v4.0.0-alpha.5 (https://getbootstrap.com)
  * Copyright 2011-2016 The Bootstrap Authors
@@ -6699,21 +6744,15 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 
 $(document).ready(function()
 {	
-	$('#login_submit').click(function() {
-		var results = document.getElementById("");
-	})
-	
-	
 	$('#loginForm').change(function() {
-		
-	var loginform = document.getElementById('loginForm');	
-		
+	
 	var username=document.forms["loginForm"]["username"].value;		
 	var password=document.forms["loginForm"]["password"].value;
 	
 	document.getElementById('username').onblur = function() {
 
 		if (username == "") {
+	
 			  document.getElementById('username').style.borderColor = "red";
 		  } else {
 			  document.getElementById('username').style.borderColor = "green";
@@ -6724,7 +6763,6 @@ $(document).ready(function()
 		
 		  if (password == "") {
 			  document.getElementById('password').style.borderColor = "red";
-			  return;
 		  } else {
 			  document.getElementById('password').style.borderColor = "green";
 		  }
@@ -6737,8 +6775,9 @@ $(document).ready(function()
 	{
 		document.getElementById('login_submit').disabled = true;
 	}
-	})
-})
+	
+	});
+});
 
 </script>
 
@@ -6749,7 +6788,7 @@ $(document).ready(function()
 
 
     <form id="loginForm" method="post" action="/helloWorld/anmeldung">
-
+	   <div id="login_content">
         <div class="form-group">
 
             <label for="username" class="control-label col-xs-2">Benutzername</label>
@@ -6783,11 +6822,11 @@ $(document).ready(function()
             </div>
 
         </div>
-
+	</div>
     </form>
-
-
 </div>
+
+
 
 </body>
 </html>
