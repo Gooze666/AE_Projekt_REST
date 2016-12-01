@@ -41,6 +41,13 @@ public class ItechResource extends JerseyClient {
     	return Itech.getResource("loginscreen.html");
     }
     
+   public String check(String name, String pw)
+   {
+	   if(name.equals("test") && pw.equals("test"))
+		   return "1";
+	   return "";
+   }
+    
     @Path("/login")
     @POST
     @Produces(MediaType.TEXT_HTML)
@@ -48,16 +55,15 @@ public class ItechResource extends JerseyClient {
     		@FormParam("username") String username,
     		@FormParam("password") String password) {
     	//ToDo: check password
-    	if(
-    	//checkpassword(username,password)==		
-    		false)
+    	String typ = check(username,password);
+    	if(typ.equals(""))
     	{
     		return presentLogin();
     	}
-    	switch(username)
+    	switch(typ)
     	{
-    	case "ceo": return formular();
-    	case "löwe": return list();
+    	case "1": return formular();
+    	case "2": return list();
     	default: return presentLogin();
     	}
     }
