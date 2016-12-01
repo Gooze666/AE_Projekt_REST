@@ -1,14 +1,16 @@
 package itech.helloWorldService;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Itech {
 
-	static final String project_base = "H:/git/AE_Projekt_REST";
+	static final String project_base = new File("").getAbsolutePath();
 	
     public static String getResource(String res){
+    	
     	StringBuilder sb = new StringBuilder();
     	BufferedReader r;
 		try {

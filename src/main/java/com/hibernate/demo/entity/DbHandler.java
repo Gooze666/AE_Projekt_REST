@@ -12,7 +12,7 @@ public class DbHandler {
 	SessionFactory factory;
 	Session session;
 	public List<Benutzer> benutzerList;
-	List<Schueler> schuelerList;
+	public List<Schueler> schuelerList;
 
 	// Creates the factory
 	void createSessionFactory() {
@@ -117,7 +117,7 @@ public class DbHandler {
 	}
 
 	// Retrieves a list of all Schuelers.
-	List<Schueler> getSchueler() {
+	public List<Schueler> getSchueler() {
 		createSessionFactory();
 		createSession();
 		try {

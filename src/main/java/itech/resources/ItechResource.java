@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import itech.helloWorldService.Anmeldedaten;
 import itech.helloWorldService.Gender;
 import itech.helloWorldService.HelloWorld;
 import itech.helloWorldService.HelloWorldJsonExample;
@@ -19,6 +20,7 @@ import org.glassfish.jersey.client.JerseyClient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hibernate.demo.entity.Benutzer;
+import com.hibernate.demo.entity.Schueler;
 import com.hibernate.demo.entity.DbHandler;
 
 import javax.ws.rs.*;
@@ -34,7 +36,12 @@ import javax.ws.rs.core.Response;
 public class ItechResource extends JerseyClient {
 	
 	private Client client;
-    public ItechResource(Client client) { this.client = client; }
+	private DbHandler db;
+    public ItechResource(Client client) 
+    { 
+    	this.client = client;
+    	db = new DbHandler();
+    }
 
     @Path("/login")
     @GET
@@ -43,9 +50,8 @@ public class ItechResource extends JerseyClient {
     	return Itech.getResource("loginscreen.html");
     }
     
-   public String check(String name, String pw)
+   public String checkPassword(String name, String pw)
    {
-	   DbHandler db = new DbHandler();
 	   db.getBenutzer();
 	   for(Benutzer tmp : db.benutzerList)
 	   {
@@ -71,7 +77,7 @@ public class ItechResource extends JerseyClient {
     		@FormParam("username") String username,
     		@FormParam("password") String password) {
     	//ToDo: check password
-    	String typ = check(username,password);
+    	String typ = checkPassword(username,password);
     	if(typ.equals(""))
     	{
     		return presentLogin();
@@ -94,13 +100,18 @@ public class ItechResource extends JerseyClient {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String list() {
-    	DbHandler db = new DbHandler();
-    	db.getBenutzer();
+    	db.getSchueler();
     	StringBuilder sb = new StringBuilder();
-		for (Benutzer tempBenutzer : db.benutzerList){
-			sb.append(tempBenutzer);
+		for (Schueler schueler : db.schuelerList){
+			if(schueler.getBestaetigt().equals("0"))
+			{
+				sb.append("<br><a href=\"/itech/formular/"
+						+schueler.getIdschueler()+"\">"
+						//+getName(schueler.getFormuldardaten())
+						+"</a>");
+			}
 		}
-        return "<html><body>list: "+sb.toString()+"</body></html>";
+        return "<html><body><h1>List der unbestätigten Anmeldungen:</h1>"+sb.toString()+"</body></html>";
     }
     
     @Path("/schueler")
@@ -108,14 +119,17 @@ public class ItechResource extends JerseyClient {
     @Produces(MediaType.TEXT_HTML)
     public String createSchueler(
     		final MultivaluedMap<String, String> formParams) {
-    	//todo: create json from params and give to service
-        return "<html><body>"+formParams.toString()+"</body></html>";
-        
+    	Anmeldedaten daten = new Anmeldedaten(formParams);
+        try {
+			return speicherSchueler(daten.getJSON());
+		} catch (JsonProcessingException e) {
+			return formular();
+		}
     }
     
-    @Path("/speicher")
+    @Path("/schuelerjson")
     @POST @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_HTML)
     public String speicherSchueler(
     		String jsonData) {
     	//todo: insert data into database

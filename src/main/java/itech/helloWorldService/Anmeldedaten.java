@@ -1,6 +1,10 @@
 package itech.helloWorldService;
 
 import javax.ws.rs.FormParam;
+import javax.ws.rs.core.MultivaluedMap;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Anmeldedaten {
 	private String firma;
@@ -102,8 +106,52 @@ public class Anmeldedaten {
 		this.setBegruendungAusbildung(begruendung_ausbildung);
 
 	}
+	
+	public Anmeldedaten(MultivaluedMap<String,String> formParams)
+	{
+		setFirma(formParams.getFirst("firma"));
+		setStrasse(formParams.getFirst("strasse"));
+		setHausnr(formParams.getFirst("hausnr"));
+		setPlz(formParams.getFirst("plz"));
+		setOrt(formParams.getFirst("ort"));
+		setTelefon(formParams.getFirst("telefon"));
+		setTelefax(formParams.getFirst("telefax"));
+		setVorname(formParams.getFirst("vorname"));
+		setName(formParams.getFirst("name"));
+		setEmail(formParams.getFirst("email"));
+		setNachnameAzubi(formParams.getFirst("nachname_azubi"));
+		setVornameAzubi(formParams.getFirst("vorname_azubi"));
+		setGeburtsdatumAzubi(formParams.getFirst("geburtsdatum_azubi"));
+		setGeburtsortAzubi(formParams.getFirst("geburtsort_azubi"));
+		setStaatsangehoerigkeitAzubi(formParams.getFirst("staatsangehoerigkeit_azubi"));
+		setGeburtslandAzubi(formParams.getFirst("geburtsland_azubi"));
+		setStrasseAzubi(formParams.getFirst("strasse_azubi"));
+		setPlzAzubi(formParams.getFirst("plz_azubi"));
+		setOrtAzubi(formParams.getFirst("ort_azubi"));
+		setBundeslandAzubi(formParams.getFirst("bundesland_azubi"));
+		setTelefonAzubi(formParams.getFirst("telefon_azubi"));
+		setMobilAzubi(formParams.getFirst("mobil_azubi"));
+		setEmailAzubi(formParams.getFirst("email_azubi"));
+		setNachnameErziehungsberechtigte(formParams.getFirst("nachname_erziehungsberechtigte"));
+		setVornameErziehungsberechtigte(formParams.getFirst("vorname_erziehungsberechtigte"));
+		setStrasseErziehungsberechtigte(formParams.getFirst("strasseErziehungsberechtigte"));
+		setHausnrErziehungsberechtigte(formParams.getFirst("hausnr_erziehungsberechtigte"));
+		setPlzErziehungsberechtigte(formParams.getFirst("plz_erziehungsberechtigte"));
+		setOrtErziehungsberechtigte(formParams.getFirst("ort_erziehungsberechtigte"));
+		setTelefonErziehungsberechtigte(formParams.getFirst("telefon_erziehungsberechtigte"));
+		setEmailErziehungsberechtigte(formParams.getFirst("email_erziehungsberechtigte"));
+		setSchulnameBildungsweg(formParams.getFirst("schulname_bildungsweg"));
+		setBundeslandBildungsweg(formParams.getFirst("bundesland_bildungsweg"));
+		setEntlassungsjahrbBldungsweg(formParams.getFirst("entlassungsjahr_bildungsweg"));
+		setHoechsterabschlussBildungsweg(formParams.getFirst("hoechsterabschluss_bildungsweg"));
+		setSchulbesuchsjahrBildungsweg(formParams.getFirst("schulbesuchsjahr_bildungsweg"));
+		setFachrichtungAusbildung(formParams.getFirst("fachrichtung_ausbildung"));
+		setAusbildungszeitVomAusbildung(formParams.getFirst("ausbildungszeit_vom_ausbildung"));
+		setAusbildungszeitBisAusbildung(formParams.getFirst("ausbildungszeit_bis_ausbildung"));
+		setBegruendungAusbildung(formParams.getFirst("begruendung_ausbildung"));
+	}
 
-	private String getFirma() {
+	public String getFirma() {
 		return firma;
 	}
 
@@ -111,7 +159,7 @@ public class Anmeldedaten {
 		this.firma = firma;
 	}
 
-	private String getStrasse() {
+	public String getStrasse() {
 		return strasse;
 	}
 
@@ -119,7 +167,7 @@ public class Anmeldedaten {
 		this.strasse = strasse;
 	}
 
-	private String getHausnr() {
+	public String getHausnr() {
 		return hausnr;
 	}
 
@@ -127,7 +175,7 @@ public class Anmeldedaten {
 		this.hausnr = hausnr;
 	}
 
-	private String getPlz() {
+	public String getPlz() {
 		return plz;
 	}
 
@@ -135,7 +183,7 @@ public class Anmeldedaten {
 		this.plz = plz;
 	}
 
-	private String getOrt() {
+	public String getOrt() {
 		return ort;
 	}
 
@@ -143,7 +191,7 @@ public class Anmeldedaten {
 		this.ort = ort;
 	}
 
-	private String getTelefon() {
+	public String getTelefon() {
 		return telefon;
 	}
 
@@ -151,7 +199,7 @@ public class Anmeldedaten {
 		this.telefon = telefon;
 	}
 
-	private String getTelefax() {
+	public String getTelefax() {
 		return telefax;
 	}
 
@@ -159,7 +207,7 @@ public class Anmeldedaten {
 		this.telefax = telefax;
 	}
 
-	private String getVorname() {
+	public String getVorname() {
 		return vorname;
 	}
 
@@ -167,7 +215,7 @@ public class Anmeldedaten {
 		this.vorname = vorname;
 	}
 
-	private String getName() {
+	public String getName() {
 		return name;
 	}
 
@@ -175,7 +223,7 @@ public class Anmeldedaten {
 		this.name = name;
 	}
 
-	private String getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
@@ -183,7 +231,7 @@ public class Anmeldedaten {
 		this.email = email;
 	}
 
-	private String getNachnameAzubi() {
+	public String getNachnameAzubi() {
 		return nachnameAzubi;
 	}
 
@@ -191,7 +239,7 @@ public class Anmeldedaten {
 		this.nachnameAzubi = nachnameAzubi;
 	}
 
-	private String getVornameAzubi() {
+	public String getVornameAzubi() {
 		return vornameAzubi;
 	}
 
@@ -199,7 +247,7 @@ public class Anmeldedaten {
 		this.vornameAzubi = vornameAzubi;
 	}
 
-	private String getGeburtsdatumAzubi() {
+	public String getGeburtsdatumAzubi() {
 		return geburtsdatumAzubi;
 	}
 
@@ -207,7 +255,7 @@ public class Anmeldedaten {
 		this.geburtsdatumAzubi = geburtsdatumAzubi;
 	}
 
-	private String getGeburtsortAzubi() {
+	public String getGeburtsortAzubi() {
 		return geburtsortAzubi;
 	}
 
@@ -215,7 +263,7 @@ public class Anmeldedaten {
 		this.geburtsortAzubi = geburtsortAzubi;
 	}
 
-	private String getStaatsangehoerigkeitAzubi() {
+	public String getStaatsangehoerigkeitAzubi() {
 		return staatsangehoerigkeitAzubi;
 	}
 
@@ -223,7 +271,7 @@ public class Anmeldedaten {
 		this.staatsangehoerigkeitAzubi = staatsangehoerigkeitAzubi;
 	}
 
-	private String getStrasseAzubi() {
+	public String getStrasseAzubi() {
 		return strasseAzubi;
 	}
 
@@ -231,7 +279,7 @@ public class Anmeldedaten {
 		this.strasseAzubi = strasseAzubi;
 	}
 
-	private String getHausnrAzubi() {
+	public String getHausnrAzubi() {
 		return hausnrAzubi;
 	}
 
@@ -239,7 +287,7 @@ public class Anmeldedaten {
 		this.hausnrAzubi = hausnrAzubi;
 	}
 
-	private String getPlzAzubi() {
+	public String getPlzAzubi() {
 		return plzAzubi;
 	}
 
@@ -247,7 +295,7 @@ public class Anmeldedaten {
 		this.plzAzubi = plzAzubi;
 	}
 
-	private String getOrtAzubi() {
+	public String getOrtAzubi() {
 		return ortAzubi;
 	}
 
@@ -255,7 +303,7 @@ public class Anmeldedaten {
 		this.ortAzubi = ortAzubi;
 	}
 
-	private String getBundeslandAzubi() {
+	public String getBundeslandAzubi() {
 		return bundeslandAzubi;
 	}
 
@@ -263,7 +311,7 @@ public class Anmeldedaten {
 		this.bundeslandAzubi = bundeslandAzubi;
 	}
 
-	private String getTelefonAzubi() {
+	public String getTelefonAzubi() {
 		return telefonAzubi;
 	}
 
@@ -271,7 +319,7 @@ public class Anmeldedaten {
 		this.telefonAzubi = telefonAzubi;
 	}
 
-	private String getMobilAzubi() {
+	public String getMobilAzubi() {
 		return mobilAzubi;
 	}
 
@@ -279,7 +327,7 @@ public class Anmeldedaten {
 		this.mobilAzubi = mobilAzubi;
 	}
 
-	private String getEmailAzubi() {
+	public String getEmailAzubi() {
 		return emailAzubi;
 	}
 
@@ -287,7 +335,7 @@ public class Anmeldedaten {
 		this.emailAzubi = emailAzubi;
 	}
 
-	private String getNachnameErziehungsberechtigte() {
+	public String getNachnameErziehungsberechtigte() {
 		return nachnameErziehungsberechtigte;
 	}
 
@@ -295,7 +343,7 @@ public class Anmeldedaten {
 		this.nachnameErziehungsberechtigte = nachnameErziehungsberechtigte;
 	}
 
-	private String getVornameErziehungsberechtigte() {
+	public String getVornameErziehungsberechtigte() {
 		return vornameErziehungsberechtigte;
 	}
 
@@ -303,7 +351,7 @@ public class Anmeldedaten {
 		this.vornameErziehungsberechtigte = vornameErziehungsberechtigte;
 	}
 
-	private String getStrasseErziehungsberechtigte() {
+	public String getStrasseErziehungsberechtigte() {
 		return strasseErziehungsberechtigte;
 	}
 
@@ -311,7 +359,7 @@ public class Anmeldedaten {
 		this.strasseErziehungsberechtigte = strasseErziehungsberechtigte;
 	}
 
-	private String getHausnrErziehungsberechtigte() {
+	public String getHausnrErziehungsberechtigte() {
 		return hausnrErziehungsberechtigte;
 	}
 
@@ -319,7 +367,7 @@ public class Anmeldedaten {
 		this.hausnrErziehungsberechtigte = hausnrErziehungsberechtigte;
 	}
 
-	private String getPlzErziehungsberechtigte() {
+	public String getPlzErziehungsberechtigte() {
 		return plzErziehungsberechtigte;
 	}
 
@@ -327,7 +375,7 @@ public class Anmeldedaten {
 		this.plzErziehungsberechtigte = plzErziehungsberechtigte;
 	}
 
-	private String getOrtErziehungsberechtigte() {
+	public String getOrtErziehungsberechtigte() {
 		return ortErziehungsberechtigte;
 	}
 
@@ -335,7 +383,7 @@ public class Anmeldedaten {
 		this.ortErziehungsberechtigte = ortErziehungsberechtigte;
 	}
 
-	private String getTelefonErziehungsberechtigte() {
+	public String getTelefonErziehungsberechtigte() {
 		return telefonErziehungsberechtigte;
 	}
 
@@ -343,7 +391,7 @@ public class Anmeldedaten {
 		this.telefonErziehungsberechtigte = telefonErziehungsberechtigte;
 	}
 
-	private String getEmailErziehungsberechtigte() {
+	public String getEmailErziehungsberechtigte() {
 		return emailErziehungsberechtigte;
 	}
 
@@ -351,7 +399,7 @@ public class Anmeldedaten {
 		this.emailErziehungsberechtigte = emailErziehungsberechtigte;
 	}
 
-	private String getSchulnameBildungsweg() {
+	public String getSchulnameBildungsweg() {
 		return schulnameBildungsweg;
 	}
 
@@ -359,7 +407,7 @@ public class Anmeldedaten {
 		this.schulnameBildungsweg = schulnameBildungsweg;
 	}
 
-	private String getBundeslandBildungsweg() {
+	public String getBundeslandBildungsweg() {
 		return bundeslandBildungsweg;
 	}
 
@@ -367,7 +415,7 @@ public class Anmeldedaten {
 		this.bundeslandBildungsweg = bundeslandBildungsweg;
 	}
 
-	private String getEntlassungsjahrbBldungsweg() {
+	public String getEntlassungsjahrbBldungsweg() {
 		return entlassungsjahrbBldungsweg;
 	}
 
@@ -375,7 +423,7 @@ public class Anmeldedaten {
 		this.entlassungsjahrbBldungsweg = entlassungsjahrbBldungsweg;
 	}
 
-	private String getHoechsterabschlussBildungsweg() {
+	public String getHoechsterabschlussBildungsweg() {
 		return hoechsterabschlussBildungsweg;
 	}
 
@@ -383,7 +431,7 @@ public class Anmeldedaten {
 		this.hoechsterabschlussBildungsweg = hoechsterabschlussBildungsweg;
 	}
 
-	private String getSchulbesuchsjahrBildungsweg() {
+	public String getSchulbesuchsjahrBildungsweg() {
 		return schulbesuchsjahrBildungsweg;
 	}
 
@@ -391,7 +439,7 @@ public class Anmeldedaten {
 		this.schulbesuchsjahrBildungsweg = schulbesuchsjahrBildungsweg;
 	}
 
-	private String getFachrichtungAusbildung() {
+	public String getFachrichtungAusbildung() {
 		return fachrichtungAusbildung;
 	}
 
@@ -399,7 +447,7 @@ public class Anmeldedaten {
 		this.fachrichtungAusbildung = fachrichtungAusbildung;
 	}
 
-	private String getAusbildungszeitVomAusbildung() {
+	public String getAusbildungszeitVomAusbildung() {
 		return ausbildungszeitVomAusbildung;
 	}
 
@@ -407,7 +455,7 @@ public class Anmeldedaten {
 		this.ausbildungszeitVomAusbildung = ausbildungszeitVomAusbildung;
 	}
 
-	private String getAusbildungszeitBisAusbildung() {
+	public String getAusbildungszeitBisAusbildung() {
 		return ausbildungszeitBisAusbildung;
 	}
 
@@ -415,7 +463,7 @@ public class Anmeldedaten {
 		this.ausbildungszeitBisAusbildung = ausbildungszeitBisAusbildung;
 	}
 
-	private String getBegruendungAusbildung() {
+	public String getBegruendungAusbildung() {
 		return begruendungAusbildung;
 	}
 
@@ -423,12 +471,23 @@ public class Anmeldedaten {
 		this.begruendungAusbildung = begruendungAusbildung;
 	}
 
-	private String getGeburtslandAzubi() {
+	public String getGeburtslandAzubi() {
 		return geburtslandAzubi;
 	}
 
 	private void setGeburtslandAzubi(String geburtslandAzubi) {
 		this.geburtslandAzubi = geburtslandAzubi;
+	}
+	
+	public String getJSON() throws JsonProcessingException
+	{
+		ObjectMapper MAPPER = new ObjectMapper();
+		return MAPPER.writeValueAsString(this);
+	}
+	
+	public void fromJSON()
+	{
+		//todo
 	}
 
 }
