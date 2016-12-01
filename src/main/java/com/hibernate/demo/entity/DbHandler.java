@@ -39,7 +39,7 @@ public class DbHandler {
 	}
 
 	// Creates a Benutzer.
-	void createBenutzer(String name, String istAdmin, String passwort, String email) {
+	public void createBenutzer(String name, String istAdmin, String passwort, String email) {
 		createSessionFactory();
 		createSession();
 		try {
@@ -66,7 +66,7 @@ public class DbHandler {
 	}
 
 	// Creates a Schueler.
-	void createSchueler(int institutionsid, String formulardaten, String besteatigt) {
+	public void createSchueler(int institutionsid, String formulardaten, String besteatigt) {
 		createSessionFactory();
 		createSession();
 		try {
@@ -139,9 +139,36 @@ public class DbHandler {
 		}
 		return schuelerList;
 	}
+	
+	// Retrieves a specific Schueler.
+	public Schueler getSchueler(int id) {
+		createSessionFactory();
+		createSession();
+		List<Schueler> schueler = null;
+		try {
+			// start a transaction
+			session.beginTransaction();
+
+			// fill list with Schuelers
+			schueler = session.createQuery("from Schueler where idschueler = "+id).list();
+
+			// commit transaction
+			session.getTransaction().commit();
+
+			System.out.println("Done!");
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			closeSession();
+		}
+		if(null != schueler && schueler.size() == 1)
+			return schueler.get(0);
+		return null;
+	}
 
 	// Update existing status of a Schueler.
-	void updateBesteatigtStatus(int schuelerId, String status) {
+	public void updateBesteatigtStatus(int schuelerId, String status) {
 		createSessionFactory();
 		createSession();
 		int id = schuelerId;
@@ -167,7 +194,7 @@ public class DbHandler {
 	}
 
 	// Update existing formula data of a Schueler.
-	void updateFormulardaten(int schuelerId, String daten) {
+	public void updateFormulardaten(int schuelerId, String daten) {
 		createSessionFactory();
 		createSession();
 		int id = schuelerId;
@@ -193,7 +220,7 @@ public class DbHandler {
 	}
 
 	// Delete existing Schueler.
-	void deleteSchueler(int schuelerId) {
+	public void deleteSchueler(int schuelerId) {
 		createSessionFactory();
 		createSession();
 		int id = schuelerId;

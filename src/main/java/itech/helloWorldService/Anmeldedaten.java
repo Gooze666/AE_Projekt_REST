@@ -1,53 +1,56 @@
 package itech.helloWorldService;
 
+import java.io.IOException;
+
 import javax.ws.rs.FormParam;
 import javax.ws.rs.core.MultivaluedMap;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 public class Anmeldedaten {
-	private String firma;
-	private String strasse;
-	private String hausnr;
-	private String plz;
-	private String ort;
-	private String telefon;
-	private String telefax;
-	private String vorname;
-	private String name;
-	private String email;
-	private String nachnameAzubi;
-	private String vornameAzubi;
-	private String geburtsdatumAzubi;
-	private String geburtsortAzubi;
-	private String staatsangehoerigkeitAzubi;
-	private String geburtslandAzubi;
-	private String strasseAzubi;
-	private String hausnrAzubi;
-	private String plzAzubi;
-	private String ortAzubi;
-	private String bundeslandAzubi;
-	private String telefonAzubi;
-	private String mobilAzubi;
-	private String emailAzubi;
-	private String nachnameErziehungsberechtigte;
-	private String vornameErziehungsberechtigte;
-	private String strasseErziehungsberechtigte;
-	private String hausnrErziehungsberechtigte;
-	private String plzErziehungsberechtigte;
-	private String ortErziehungsberechtigte;
-	private String telefonErziehungsberechtigte;
-	private String emailErziehungsberechtigte;
-	private String schulnameBildungsweg;
-	private String bundeslandBildungsweg;
-	private String entlassungsjahrbBldungsweg;
-	private String hoechsterabschlussBildungsweg;
-	private String schulbesuchsjahrBildungsweg;
-	private String fachrichtungAusbildung;
-	private String ausbildungszeitVomAusbildung;
-	private String ausbildungszeitBisAusbildung;
-	private String begruendungAusbildung;
+	private String firma = "";
+	private String strasse = "";
+	private String hausnr = "";
+	private String plz = "";
+	private String ort = "";
+	private String telefon = "";
+	private String telefax = "";
+	private String vorname = "";
+	private String name = "";
+	private String email = "";
+	private String nachnameAzubi = "";
+	private String vornameAzubi = "";
+	private String geburtsdatumAzubi = "";
+	private String geburtsortAzubi = "";
+	private String staatsangehoerigkeitAzubi = "";
+	private String geburtslandAzubi = "";
+	private String strasseAzubi = "";
+	private String hausnrAzubi = "";
+	private String plzAzubi = "";
+	private String ortAzubi = "";
+	private String bundeslandAzubi = "";
+	private String telefonAzubi = "";
+	private String mobilAzubi = "";
+	private String emailAzubi = "";
+	private String nachnameErziehungsberechtigte = "";
+	private String vornameErziehungsberechtigte = "";
+	private String strasseErziehungsberechtigte = "";
+	private String hausnrErziehungsberechtigte = "";
+	private String plzErziehungsberechtigte = "";
+	private String ortErziehungsberechtigte = "";
+	private String telefonErziehungsberechtigte = "";
+	private String emailErziehungsberechtigte = "";
+	private String schulnameBildungsweg = "";
+	private String bundeslandBildungsweg = "";
+	private String entlassungsjahrbBldungsweg = "";
+	private String hoechsterabschlussBildungsweg = "";
+	private String schulbesuchsjahrBildungsweg = "";
+	private String fachrichtungAusbildung = "";
+	private String ausbildungszeitVomAusbildung = "";
+	private String ausbildungszeitBisAusbildung = "";
+	private String begruendungAusbildung = "";
 
 	
 	public Anmeldedaten(
@@ -81,6 +84,7 @@ public class Anmeldedaten {
 		this.setStaatsangehoerigkeitAzubi(staatsangehoerigkeit_azubi);
 		this.setGeburtslandAzubi(geburtsland_azubi);
 		this.setStrasseAzubi(strasse_azubi);
+		this.setHausnrAzubi(hausnr_azubi);
 		this.setPlzAzubi(plz_azubi);
 		this.setOrtAzubi(ort_azubi);
 		this.setBundeslandAzubi(bundesland_azubi);
@@ -89,7 +93,7 @@ public class Anmeldedaten {
 		this.setEmailAzubi(email_azubi);
 		this.setNachnameErziehungsberechtigte(nachname_erziehungsberechtigte);
 		this.setVornameErziehungsberechtigte(vorname_erziehungsberechtigte);
-		this.setStrasseErziehungsberechtigte(strasseErziehungsberechtigte);
+		this.setStrasseErziehungsberechtigte(strasse_erziehungsberechtigte);
 		this.setHausnrErziehungsberechtigte(hausnr_erziehungsberechtigte);
 		this.setPlzErziehungsberechtigte(plz_erziehungsberechtigte);
 		this.setOrtErziehungsberechtigte(ort_erziehungsberechtigte);
@@ -126,6 +130,7 @@ public class Anmeldedaten {
 		setStaatsangehoerigkeitAzubi(formParams.getFirst("staatsangehoerigkeit_azubi"));
 		setGeburtslandAzubi(formParams.getFirst("geburtsland_azubi"));
 		setStrasseAzubi(formParams.getFirst("strasse_azubi"));
+		setHausnrAzubi(formParams.getFirst("hausnr_azubi"));
 		setPlzAzubi(formParams.getFirst("plz_azubi"));
 		setOrtAzubi(formParams.getFirst("ort_azubi"));
 		setBundeslandAzubi(formParams.getFirst("bundesland_azubi"));
@@ -134,7 +139,7 @@ public class Anmeldedaten {
 		setEmailAzubi(formParams.getFirst("email_azubi"));
 		setNachnameErziehungsberechtigte(formParams.getFirst("nachname_erziehungsberechtigte"));
 		setVornameErziehungsberechtigte(formParams.getFirst("vorname_erziehungsberechtigte"));
-		setStrasseErziehungsberechtigte(formParams.getFirst("strasseErziehungsberechtigte"));
+		setStrasseErziehungsberechtigte(formParams.getFirst("strasse_erziehungsberechtigte"));
 		setHausnrErziehungsberechtigte(formParams.getFirst("hausnr_erziehungsberechtigte"));
 		setPlzErziehungsberechtigte(formParams.getFirst("plz_erziehungsberechtigte"));
 		setOrtErziehungsberechtigte(formParams.getFirst("ort_erziehungsberechtigte"));
@@ -150,6 +155,9 @@ public class Anmeldedaten {
 		setAusbildungszeitBisAusbildung(formParams.getFirst("ausbildungszeit_bis_ausbildung"));
 		setBegruendungAusbildung(formParams.getFirst("begruendung_ausbildung"));
 	}
+	
+	public Anmeldedaten()
+	{}
 
 	public String getFirma() {
 		return firma;
@@ -481,13 +489,22 @@ public class Anmeldedaten {
 	
 	public String getJSON() throws JsonProcessingException
 	{
-		ObjectMapper MAPPER = new ObjectMapper();
-		return MAPPER.writeValueAsString(this);
+		//ObjectMapper MAPPER = new ObjectMapper();
+		//return MAPPER.writeValueAsString(this);
+		Gson gson = new Gson();
+		return gson.toJson(this); 
 	}
 	
-	public void fromJSON()
+	static public Anmeldedaten fromJSON(String json)
 	{
-		//todo
+		ObjectMapper MAPPER = new ObjectMapper();
+		try {
+			return MAPPER.readValue(json, Anmeldedaten.class);
+		} catch (IOException e) {
+			return null;
+		}
+		//Gson gson = new Gson();
+		//return gson.fromJson(json, Anmeldedaten.class);
 	}
 
 }

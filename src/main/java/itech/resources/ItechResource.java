@@ -25,6 +25,7 @@ import com.hibernate.demo.entity.DbHandler;
 
 import javax.ws.rs.*;
 import javax.ws.rs.client.Client;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
@@ -36,48 +37,26 @@ import javax.ws.rs.core.Response;
 public class ItechResource extends JerseyClient {
 	
 	private Client client;
-	private DbHandler db;
     public ItechResource(Client client) 
     { 
     	this.client = client;
-    	db = new DbHandler();
     }
 
     @Path("/login")
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public String presentLogin() {
-    	return Itech.getResource("loginscreen.html");
+    public Response presentLogin() {
+    	return Response.ok(Itech.getResource("loginscreen.html"), MediaType.TEXT_HTML).build();
     }
     
-   public String checkPassword(String name, String pw)
-   {
-	   db.getBenutzer();
-	   for(Benutzer tmp : db.benutzerList)
-	   {
-		   if(tmp.getInstitutionsname().equals(name))
-		   {
-			   if(tmp.getPasswort().equals(pw))
-			   {
-				   return tmp.getIst_admin();
-			   }
-			   else
-			   {
-				   return "";
-			   }
-		   }
-	   }
-	   return "";
-   }
-    
+       
     @Path("/login")
     @POST
     @Produces(MediaType.TEXT_HTML)
-    public String processLogin(
+    public Response processLogin(
     		@FormParam("username") String username,
     		@FormParam("password") String password) {
-    	//ToDo: check password
-    	String typ = checkPassword(username,password);
+    	String typ = Itech.checkPassword(username,password);
     	if(typ.equals(""))
     	{
     		return presentLogin();
@@ -92,86 +71,111 @@ public class ItechResource extends JerseyClient {
     @Path("/formular")
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public String formular() {
-    	return Itech.getResource("anmeldeformular.html");
+    public Response formular() {
+    	return Response.ok(Itech.getResource("anmeldeformular.html"), MediaType.TEXT_HTML).build();
     }
     
     @Path("/list")
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public String list() {
+    public Response list() {
+    	DbHandler db = new DbHandler();
     	db.getSchueler();
-    	StringBuilder sb = new StringBuilder();
-		for (Schueler schueler : db.schuelerList){
-			if(schueler.getBestaetigt().equals("0"))
-			{
-				sb.append("<br><a href=\"/itech/formular/"
-						+schueler.getIdschueler()+"\">"
-						//+getName(schueler.getFormuldardaten())
-						+"</a>");
-			}
-		}
-        return "<html><body><h1>List der unbestätigten Anmeldungen:</h1>"+sb.toString()+"</body></html>";
+    	return Response.ok(Itech.getSchuelerList(db.schuelerList), MediaType.TEXT_HTML).build();
     }
     
     @Path("/schueler")
     @POST @Consumes("application/x-www-form-urlencoded")
     @Produces(MediaType.TEXT_HTML)
-    public String createSchueler(
+    public Response createSchueler(
     		final MultivaluedMap<String, String> formParams) {
     	Anmeldedaten daten = new Anmeldedaten(formParams);
         try {
 			return speicherSchueler(daten.getJSON());
 		} catch (JsonProcessingException e) {
-			return formular();
+			return Response.serverError().build();
 		}
     }
     
     @Path("/schuelerjson")
     @POST @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_HTML)
-    public String speicherSchueler(
+    public Response speicherSchueler(
     		String jsonData) {
-    	//todo: insert data into database
-    	return "done";
+    	DbHandler db = new DbHandler();
+    	db.createSchueler(1,jsonData, "N");
+    	return Response.ok(Itech.getResource("anmeldungerfolgt.html"), MediaType.TEXT_HTML).build();
     }
     
     @Path("/schueler/{id}")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String readSchueler(
-    		@PathParam("id") long id) {
-    	final class Schueler
+    @Produces(MediaType.TEXT_HTML)
+    public Response readSchueler(
+    		@PathParam("id") int id) {
+    	DbHandler db = new DbHandler();
+    	Schueler schueler = db.getSchueler(id);
+    	if(schueler == null)
     	{
-    		public String vorname = "eins";
-    		public String nachname = "zwei";
-    	};
-    	Schueler schueler = new Schueler();
-    	//ToDo: Read Schueler from database
-    	ObjectMapper MAPPER = new ObjectMapper();
-    	try {
-			return MAPPER.writeValueAsString(schueler);
-		} catch (JsonProcessingException e) {
-			return "";
-		}
+    		return list();
+    	}
+    	else
+    	{
+    		Anmeldedaten daten = Anmeldedaten.fromJSON(schueler.getFormuldardaten());
+    		String seite = Itech.getResource("anmeldeformularverwaltung.html");
+    		if(daten == null)
+    		{
+    			return list();
+    		}
+    		return Response.ok(Itech.replaceDaten(seite, id, daten), MediaType.TEXT_HTML).build();
+    	}
+    }
+    
+    @Path("/schueler/{id}")
+    @POST @Consumes("application/x-www-form-urlencoded")
+    @Produces(MediaType.TEXT_HTML)
+    public Response processSchueler(
+    		@PathParam("id") int id,
+    		final MultivaluedMap<String, String> formParams) {
+    	switch(formParams.getFirst("_method"))
+    	{
+    	case "DELETE": return deleteSchueler(id);
+    	case "PUT": return updateSchueler(id, formParams);
+    	default: return list();
+    	}
     }
     
     @Path("/schueler/{id}")
     @DELETE
     @Produces(MediaType.TEXT_HTML)
-    public String deleteSchueler(
-    		@PathParam("id") long id) {
-        // TODO: remove id from database
-    	return list();
+    public Response deleteSchueler(
+    		@PathParam("id") int id) {
+    	DbHandler db = new DbHandler();
+        db.deleteSchueler(id);
+        return list();
+    }
+    
+    @Path("/schuelerstatus/{id}")
+    @POST
+    @Produces(MediaType.TEXT_HTML)
+    public Response bestaetigeSchueler(
+    		@PathParam("id") int id) {
+    	DbHandler db = new DbHandler();
+        db.updateBesteatigtStatus(id, "J");        
+    	return Response.ok(Itech.replaceEmail(db.getSchueler(id)), MediaType.TEXT_HTML).build();
     }
     
     @Path("/schueler/{id}")
     @PUT @Consumes("application/x-www-form-urlencoded")
     @Produces(MediaType.TEXT_HTML)
-    public String updateSchueler(
-    		@PathParam("id") long id,
+    public Response updateSchueler(
+    		@PathParam("id") int id,
     		final MultivaluedMap<String, String> formParams) {
-    	// TODO: update id in database
+    	Anmeldedaten daten = new Anmeldedaten(formParams);
+    	try {
+    		DbHandler db = new DbHandler();
+			db.updateFormulardaten(id, daten.getJSON());
+		} catch (JsonProcessingException e) {
+		}
     	return list();
     }
 
